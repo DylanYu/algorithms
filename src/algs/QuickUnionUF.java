@@ -7,10 +7,10 @@ package algs;
  * The performance improves significantly with balance.
  * <p>union(): O(lgN); connected(): O(lgN).
  * <p>Apply N = 100000, call union() and connected() randomly for 100000 times.
- * Running time: QuickFind is 8500ms, UnbalancedQuickUnion is 5000, and 
- * BalancedQuickUnion is 40.
- * <p>When N is 10000000, with path compression, the running time is 2800, while
- * without path compression it is 3000.
+ * Running time: QuickFind is 8.5s, UnbalancedQuickUnion is 5s, and 
+ * BalancedQuickUnion is 0.04s.
+ * <p>When N is 10000000, with path compression, the running time is 2.8s, while
+ * without path compression it is 3s.
  *
  * @author Dongliang Yu
  */
@@ -94,14 +94,13 @@ public class QuickUnionUF {
 //		int N = 100000;
 //		QuickUnionUF uf = new QuickUnionUF(N);
 //		java.util.Random random = new java.util.Random();
-//		java.util.Date start = new java.util.Date();
+//		Stopwatch stopwatch = new Stopwatch();
 //		for (int count = 0; count < N; count++) {
 //			int i = random.nextInt(N);
 //			int j = random.nextInt(N);
 //			uf.union(i, j);
 //			uf.connected(i, j);
 //		}
-//		java.util.Date end = new java.util.Date();
-//		System.out.println(end.getTime() - start.getTime());
+//		System.out.println(stopwatch.elapsedTime());
 	}
 }

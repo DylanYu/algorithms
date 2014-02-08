@@ -61,7 +61,7 @@ public class QuickFindUF {
 //		int N = 100000;
 //		QuickFindUF uf = new QuickFindUF(N);
 //		java.util.Random random = new java.util.Random();
-//		java.util.Date start = new java.util.Date();
+//		Stopwatch stopwatch = new Stopwatch();
 //		for (int count = 0; count < N; count++) {
 //			int i = random.nextInt(N);
 //			int j = random.nextInt(N);
@@ -69,6 +69,6 @@ public class QuickFindUF {
 //			uf.connected(i, j);
 //		}
 //		java.util.Date end = new java.util.Date();
-//		System.out.println(end.getTime() - start.getTime());
+//		System.out.println(stopwatch.elapsedTime());
 	}
 }
