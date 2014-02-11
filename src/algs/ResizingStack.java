@@ -34,7 +34,7 @@ public class ResizingStack<Item> implements Iterable<Item>{
 		if (isEmpty())
 			throw new NoSuchElementException("Stack Underflow");
 		Item item = s[--N];
-		s[N] = null;        // to avoid redundant link
+		s[N] = null;        // to avoid loitering
 		if (N < capacity/4)
 			resize(capacity / 2);
 		return item;
