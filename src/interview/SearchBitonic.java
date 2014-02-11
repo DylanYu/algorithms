@@ -89,27 +89,26 @@ public class SearchBitonic {
 	 * search in bitonic array
 	 * ~3lgn
 	 */
-	public static int search_(int[] a, int key) {
+	public static int bitonicSearch_(int[] a, int key) {
 		int m = max(a);
 		if (a[m] == key)
 			return m;
 		int leftResult = binarySearchIncreasing(a, 0, m, key);
-		int rightResult = binarySearchDecreasing(a, m, a.length - 1, key);
 		if (leftResult != -1)
 			return leftResult;
-		else
-			return rightResult;
+		int rightResult = binarySearchDecreasing(a, m, a.length - 1, key);
+		return rightResult;
 	}
 	
 	/**
 	 * search in bitonic array
 	 * ~2lgn
 	 */
-	public static int search(int[] a, int key) {
-		return search(a, 0, a.length - 1, key);
+	public static int bitonicSearch(int[] a, int key) {
+		return bitonicSearch(a, 0, a.length - 1, key);
 	}
 	
-	private static int search(int[] a, int lo, int hi, int key) {
+	private static int bitonicSearch(int[] a, int lo, int hi, int key) {
 		int mid = (lo + hi) / 2;
 		int now = a[mid];
 		if (now == key)
@@ -119,20 +118,22 @@ public class SearchBitonic {
 		int leftResult, rightResult;
 		if (left < now && now < right) {
 			leftResult = binarySearchIncreasing(a, lo, mid - 1, key);
-			rightResult = search(a, mid + 1, hi, key);
+			if (leftResult != -1)
+				return leftResult;
+			return bitonicSearch(a, mid + 1, hi, key);
 		}
 		else if (left > now && now > right) {
-			leftResult = search(a, lo, mid - 1, key);
 			rightResult = binarySearchDecreasing(a, mid + 1, hi, key);
+			if (rightResult != -1)
+				return rightResult;
+			return bitonicSearch(a, lo, mid - 1, key);
 		}
 		else {
 			leftResult = binarySearchIncreasing(a, lo, mid - 1, key);
-			rightResult = binarySearchDecreasing(a, mid + 1, hi, key);
+			if (leftResult != -1)
+				return leftResult;
+			return binarySearchDecreasing(a, mid + 1, hi, key);
 		}
-		if (leftResult != -1)
-			return leftResult;
-		else
-			return rightResult;
 	}
 	
 	public static void main(String[] args) {

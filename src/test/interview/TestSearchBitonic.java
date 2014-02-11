@@ -20,68 +20,68 @@ public class TestSearchBitonic {
 	
 	@Test
 	public void testSearch() {
-		assertEquals(0, SearchBitonic.search(a, -9));
-		assertEquals(2, SearchBitonic.search(a, 1));
-		assertEquals(3, SearchBitonic.search(a, 7));
-		assertEquals(4, SearchBitonic.search(a, 9));
-		assertEquals(5, SearchBitonic.search(a, 8));
-		assertEquals(7, SearchBitonic.search(a, 2));
-		assertEquals(8, SearchBitonic.search(a, -2));
+		assertEquals(0, SearchBitonic.bitonicSearch(a, -9));
+		assertEquals(2, SearchBitonic.bitonicSearch(a, 1));
+		assertEquals(3, SearchBitonic.bitonicSearch(a, 7));
+		assertEquals(4, SearchBitonic.bitonicSearch(a, 9));
+		assertEquals(5, SearchBitonic.bitonicSearch(a, 8));
+		assertEquals(7, SearchBitonic.bitonicSearch(a, 2));
+		assertEquals(8, SearchBitonic.bitonicSearch(a, -2));
 		
-		assertEquals(0, SearchBitonic.search(b, -9));
-		assertEquals(2, SearchBitonic.search(b, 1));
-		assertEquals(3, SearchBitonic.search(b, 7));
-		assertEquals(4, SearchBitonic.search(b, 9));
-		assertEquals(5, SearchBitonic.search(b, 8));
+		assertEquals(0, SearchBitonic.bitonicSearch(b, -9));
+		assertEquals(2, SearchBitonic.bitonicSearch(b, 1));
+		assertEquals(3, SearchBitonic.bitonicSearch(b, 7));
+		assertEquals(4, SearchBitonic.bitonicSearch(b, 9));
+		assertEquals(5, SearchBitonic.bitonicSearch(b, 8));
 		
-		assertEquals(0, SearchBitonic.search(c, 7));
-		assertEquals(1, SearchBitonic.search(c, 9));
-		assertEquals(2, SearchBitonic.search(c, 8));
-		assertEquals(4, SearchBitonic.search(c, 2));
-		assertEquals(5, SearchBitonic.search(c, -2));
+		assertEquals(0, SearchBitonic.bitonicSearch(c, 7));
+		assertEquals(1, SearchBitonic.bitonicSearch(c, 9));
+		assertEquals(2, SearchBitonic.bitonicSearch(c, 8));
+		assertEquals(4, SearchBitonic.bitonicSearch(c, 2));
+		assertEquals(5, SearchBitonic.bitonicSearch(c, -2));
 		
-		assertEquals(0, SearchBitonic.search(d, -9));
-		assertEquals(1, SearchBitonic.search(d, -3));
-		assertEquals(3, SearchBitonic.search(d, 7));
-		assertEquals(4, SearchBitonic.search(d, 9));
+		assertEquals(0, SearchBitonic.bitonicSearch(d, -9));
+		assertEquals(1, SearchBitonic.bitonicSearch(d, -3));
+		assertEquals(3, SearchBitonic.bitonicSearch(d, 7));
+		assertEquals(4, SearchBitonic.bitonicSearch(d, 9));
 		
-		assertEquals(0, SearchBitonic.search(e, 9));
-		assertEquals(1, SearchBitonic.search(e, 8));
-		assertEquals(3, SearchBitonic.search(e, 2));
-		assertEquals(4, SearchBitonic.search(e, -2));
+		assertEquals(0, SearchBitonic.bitonicSearch(e, 9));
+		assertEquals(1, SearchBitonic.bitonicSearch(e, 8));
+		assertEquals(3, SearchBitonic.bitonicSearch(e, 2));
+		assertEquals(4, SearchBitonic.bitonicSearch(e, -2));
 	}
 	
 	@Test
 	public void testSearch_() {
-		assertEquals(0, SearchBitonic.search_(a, -9));
-		assertEquals(2, SearchBitonic.search_(a, 1));
-		assertEquals(3, SearchBitonic.search_(a, 7));
-		assertEquals(4, SearchBitonic.search_(a, 9));
-		assertEquals(5, SearchBitonic.search_(a, 8));
-		assertEquals(7, SearchBitonic.search_(a, 2));
-		assertEquals(8, SearchBitonic.search_(a, -2));
+		assertEquals(0, SearchBitonic.bitonicSearch_(a, -9));
+		assertEquals(2, SearchBitonic.bitonicSearch_(a, 1));
+		assertEquals(3, SearchBitonic.bitonicSearch_(a, 7));
+		assertEquals(4, SearchBitonic.bitonicSearch_(a, 9));
+		assertEquals(5, SearchBitonic.bitonicSearch_(a, 8));
+		assertEquals(7, SearchBitonic.bitonicSearch_(a, 2));
+		assertEquals(8, SearchBitonic.bitonicSearch_(a, -2));
 		
-		assertEquals(0, SearchBitonic.search_(b, -9));
-		assertEquals(2, SearchBitonic.search_(b, 1));
-		assertEquals(3, SearchBitonic.search_(b, 7));
-		assertEquals(4, SearchBitonic.search_(b, 9));
-		assertEquals(5, SearchBitonic.search_(b, 8));
+		assertEquals(0, SearchBitonic.bitonicSearch_(b, -9));
+		assertEquals(2, SearchBitonic.bitonicSearch_(b, 1));
+		assertEquals(3, SearchBitonic.bitonicSearch_(b, 7));
+		assertEquals(4, SearchBitonic.bitonicSearch_(b, 9));
+		assertEquals(5, SearchBitonic.bitonicSearch_(b, 8));
 		
-		assertEquals(0, SearchBitonic.search_(c, 7));
-		assertEquals(1, SearchBitonic.search_(c, 9));
-		assertEquals(2, SearchBitonic.search_(c, 8));
-		assertEquals(4, SearchBitonic.search_(c, 2));
-		assertEquals(5, SearchBitonic.search_(c, -2));
+		assertEquals(0, SearchBitonic.bitonicSearch_(c, 7));
+		assertEquals(1, SearchBitonic.bitonicSearch_(c, 9));
+		assertEquals(2, SearchBitonic.bitonicSearch_(c, 8));
+		assertEquals(4, SearchBitonic.bitonicSearch_(c, 2));
+		assertEquals(5, SearchBitonic.bitonicSearch_(c, -2));
 		
-		assertEquals(0, SearchBitonic.search_(d, -9));
-		assertEquals(1, SearchBitonic.search_(d, -3));
-		assertEquals(3, SearchBitonic.search_(d, 7));
-		assertEquals(4, SearchBitonic.search_(d, 9));
+		assertEquals(0, SearchBitonic.bitonicSearch_(d, -9));
+		assertEquals(1, SearchBitonic.bitonicSearch_(d, -3));
+		assertEquals(3, SearchBitonic.bitonicSearch_(d, 7));
+		assertEquals(4, SearchBitonic.bitonicSearch_(d, 9));
 		
-		assertEquals(0, SearchBitonic.search_(e, 9));
-		assertEquals(1, SearchBitonic.search_(e, 8));
-		assertEquals(3, SearchBitonic.search_(e, 2));
-		assertEquals(4, SearchBitonic.search_(e, -2));
+		assertEquals(0, SearchBitonic.bitonicSearch_(e, 9));
+		assertEquals(1, SearchBitonic.bitonicSearch_(e, 8));
+		assertEquals(3, SearchBitonic.bitonicSearch_(e, 2));
+		assertEquals(4, SearchBitonic.bitonicSearch_(e, -2));
 	}
 	
 	@Test
