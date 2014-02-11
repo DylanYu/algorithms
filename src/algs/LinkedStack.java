@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
  * @author Dongliang Yu
  *
  */
-public class LinkedStack <Item> implements Iterable<Item> {
+public class LinkedStack<Item> implements Iterable<Item> {
 	
 	private Node head;
 	private int N;
