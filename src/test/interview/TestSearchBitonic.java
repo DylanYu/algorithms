@@ -12,11 +12,11 @@ import org.junit.Test;
  */
 public class TestSearchBitonic {
 	
-	int[] a = {-9, -3, 1, 7, 9, 8, 6, 2, -2};
-	int[] b = {-9, -3, 1, 7, 9, 8};
-	int[] c = {7, 9, 8, 6, 2, -2};
-	int[] d = {-9, -3, 1, 7, 9};
-	int[] e = {9, 8, 6, 2, -2};
+	private int[] a = {-9, -3, 1, 7, 9, 8, 6, 2, -2};
+	private int[] b = {-9, -3, 1, 7, 9, 8};
+	private int[] c = {7, 9, 8, 6, 2, -2};
+	private int[] d = {-9, -3, 1, 7, 9};
+	private int[] e = {9, 8, 6, 2, -2};
 	
 	@Test
 	public void testSearch() {
