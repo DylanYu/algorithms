@@ -18,8 +18,9 @@ public class ThreeSum {
 		int N = a.length;
 		for (int i = 0; i < N; i++) {
 			int target = -a[i];
-			int min = 0;
-			int max = N-1;
+			// start from i+1, to avoid duplicates
+			int min = i + 1;
+			int max = N - 1;
 			while (min < max) {
 				int ab = a[min] + a[max];
 				if (ab < target)
@@ -27,8 +28,7 @@ public class ThreeSum {
 				else if (ab > target)
 					max--;
 				else {
-					if (a[min] != a[i] && a[max] != a[i])
-						System.out.printf("%d + %d + %d = 0\n", a[min], a[max], a[i]);
+					System.out.printf("%d + %d + %d = 0\n", a[min], a[max], a[i]);
 					min++;
 					max--;
 				}
@@ -42,8 +42,9 @@ public class ThreeSum {
 		int N = a.length;
 		for (int i = 0; i < N; i++) {
 			int target = -a[i];
-			int min = 0;
-			int max = N-1;
+			// start from i+1, to avoid duplicates
+			int min = i + 1;
+			int max = N - 1;
 			while (min < max) {
 				int ab = a[min] + a[max];
 				if (ab < target)
@@ -51,8 +52,7 @@ public class ThreeSum {
 				else if (ab > target)
 					max--;
 				else {
-					if (a[min] != a[i] && a[max] != a[i])
-						count++;
+					count++;
 					min++;
 					max--;
 				}
@@ -82,10 +82,11 @@ public class ThreeSum {
 	}
 	
 	public static void main(String[] args) {
-		int[] a = {1, -5, 7, -9, 3, 1, 6, -4, 2, 10, -11, -23, 17, -3};
+		int[] a = {1, -5, 7, 26, -12, -9, 3, 6, -4, 2, 10, -11, -23, 17, -3};
 		printAll(a.clone());
 		System.out.println(count(a.clone()));
 		System.out.println();
+		
 		printAllBrute(a.clone());
 		System.out.println(countBrute(a.clone()));
 	}
