@@ -121,14 +121,12 @@ public class SearchBitonic {
 			if (leftResult != -1)
 				return leftResult;
 			return bitonicSearch(a, mid + 1, hi, key);
-		}
-		else if (left > now && now > right) {
+		} else if (left > now && now > right) {
 			rightResult = binarySearchDecreasing(a, mid + 1, hi, key);
 			if (rightResult != -1)
 				return rightResult;
 			return bitonicSearch(a, lo, mid - 1, key);
-		}
-		else {
+		} else {
 			leftResult = binarySearchIncreasing(a, lo, mid - 1, key);
 			if (leftResult != -1)
 				return leftResult;

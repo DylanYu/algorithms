@@ -55,13 +55,11 @@ public class SuccessorWithDelete {
 			ht[i] += 1;
 			if (max[i] < max[j])
 				max[i] = max[j];
-		}
-		else if (ht[i] > ht[j]) {
+		} else if (ht[i] > ht[j]) {
 			id[j] = i;
 			if (max[i] < max[j])
 				max[i] = max[j];
-		}
-		else {
+		} else {
 			id[i] = j;
 			if (max[j] < max[i])
 				max[j] = max[i];

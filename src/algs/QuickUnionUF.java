@@ -55,8 +55,7 @@ public class QuickUnionUF {
 		if (size[i] > size[j]) {
 			id[j] = id[i];
 			size[i] += size[j];
-		}
-		else {
+		} else {
 			id[i] = id[j];
 			size[j] += size[i];
 		}
