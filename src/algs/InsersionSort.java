@@ -1,5 +1,10 @@
 package algs;
 
+/**
+ * 
+ * @author Dongliang Yu
+ * 
+ */
 public class InsersionSort {
 
     public static void sort(Comparable[] a) {
