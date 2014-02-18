@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import algs.InsersionSort;
+import algs.MergeSort;
 import algs.SelectionSort;
 import algs.ShellSort;
 import algs.Stopwatch;
@@ -25,7 +26,7 @@ public class TestSort {
         Random rand = new Random(System.currentTimeMillis());
         Double[] a = new Double[N];
         for (int i = 0; i < N; i++)
-            a[i] = (double) rand.nextInt(N * N);
+            a[i] = (double) rand.nextInt();
         return a;
     }
 
@@ -59,27 +60,38 @@ public class TestSort {
         ShellSort.sort(a);
         assertEquals(true, check(a));
     }
+    
+    @Test
+    public void testMergeSort() {
+        MergeSort.sort(a);
+        assertEquals(true, check(a));
+    }
 
     @Test
     public void testTime() {
-        for (int N = 1000; N <= 100000; N *= 10) {
+        for (int N = 1000; N <= 10000000; N *= 10) {
             System.out.println("N is " + N);
             Double[] a = createArray(N);
 
             Double[] d = a.clone();
             Stopwatch watch = new Stopwatch();
-            SelectionSort.sort(d);
-            System.out.println("Selection Sort: " + watch.elapsedTime());
-
+//            SelectionSort.sort(d);
+//            System.out.println("Selection Sort: " + watch.elapsedTime());
+//
+//            d = a.clone();
+//            watch = new Stopwatch();
+//            InsersionSort.sort(d);
+//            System.out.println("Insersion Sort: " + watch.elapsedTime());
+//
+//            d = a.clone();
+//            watch = new Stopwatch();
+//            ShellSort.sort(d);
+//            System.out.println("Shell Sort: " + watch.elapsedTime());
+            
             d = a.clone();
             watch = new Stopwatch();
-            InsersionSort.sort(d);
-            System.out.println("Insersion Sort: " + watch.elapsedTime());
-
-            d = a.clone();
-            watch = new Stopwatch();
-            ShellSort.sort(d);
-            System.out.println("Shell Sort: " + watch.elapsedTime());
+            MergeSort.sort(d);
+            System.out.println("Merge Sort: " + watch.elapsedTime());
         }
     }
 
