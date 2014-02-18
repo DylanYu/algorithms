@@ -5,7 +5,7 @@ package algs;
  * @author Dongliang Yu
  * 
  */
-public class InsersionSort {
+public class InsertionSort {
 
     public static void sort(Comparable[] a) {
         sort(a, 0, a.length - 1);
