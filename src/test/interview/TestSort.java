@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import algs.InsersionSort;
 import algs.MergeSort;
+import algs.Quick3Way;
 import algs.QuickSort;
 import algs.SelectionSort;
 import algs.ShellSort;
@@ -71,6 +72,12 @@ public class TestSort {
     @Test
     public void testQuickSort() {
         QuickSort.sort(a);
+        assertEquals(true, check(a));
+    }
+    
+    @Test
+    public void testQuick3WaySort() {
+        Quick3Way.sort(a);
         assertEquals(true, check(a));
     }
 
