@@ -16,14 +16,14 @@ public class Quick3Way {
             return;
         int p = selectMedianPivot(a, lo, hi);
         Comparable pivot = a[p];
+        int i = lo;
         int lt = lo;
         int gt = hi;
-        int i = lo;
         while (i <= gt) {
             int cmp = a[i].compareTo(pivot);
-            if (cmp < 0)
+            if (cmp < 0) {
                 exch(a, lt++, i++);
-            else if (cmp > 0)
+            } else if (cmp > 0)
                 exch(a, i, gt--);
             else
                 i++;

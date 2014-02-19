@@ -16,6 +16,24 @@ import algs.ShellSort;
 import algs.Stopwatch;
 
 /**
+ * Note: Java uses quicksort for primitive types but mergesort for objects.
+ * Here's an explanation from stackoverflow:
+ * <p>
+ * The most likely reason is that quicksort is not stable, i.e. equal entries 
+ * can change their relative position during the sort; among other things, 
+ * this means that if you sort an already sorted array, it may not stay 
+ * unchanged.
+ * <p>
+ * Since primitive types have no identity (there is no way to distinguish two 
+ * ints with the same value), this does not matter for them. But for reference 
+ * types, it could cause problems for some applications. Therefore, a stable 
+ * merge sort is used for those.
+ * <p>
+ * On the other head, a reason not to use the (guaranteed n*log(n)) merge sort 
+ * for primitive types might be that it requires making a clone of the array. 
+ * For reference types, where the referred objects usually take up far more 
+ * memory than the array of references, this generally does not matter. But 
+ * for primitive types, cloning the array outright doubles the memory usage.
  * 
  * @author Dongliang Yu
  * 
@@ -74,12 +92,6 @@ public class TestSort {
         QuickSort.sort(a);
         assertEquals(true, check(a));
     }
-    
-    @Test
-    public void testQuick3WaySort() {
-        Quick3Way.sort(a);
-        assertEquals(true, check(a));
-    }
 
     @Test
     public void testSelect() {
@@ -90,6 +102,12 @@ public class TestSort {
         assertEquals(QuickSort.select(a.clone(), 4), b[4]);
         assertEquals(QuickSort.select(a.clone(), 6), b[6]);
         assertEquals(QuickSort.select(a.clone(), 9), b[9]);
+    }
+
+    @Test
+    public void testQuick3WaySort() {
+        Quick3Way.sort(a);
+        assertEquals(true, check(a));
     }
     
     @Test
@@ -122,6 +140,11 @@ public class TestSort {
             watch = new Stopwatch();
             QuickSort.sort(d);
             System.out.println("Quick Sort: " + watch.elapsedTime());
+            
+            d = a.clone();
+            watch = new Stopwatch();
+            Quick3Way.sort(d);
+            System.out.println("Quick3Way Sort: " + watch.elapsedTime());
         }
     }
 

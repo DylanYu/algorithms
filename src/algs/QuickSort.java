@@ -20,7 +20,7 @@ public class QuickSort {
     }
     
     private static int partition(Comparable[] a, int lo, int hi) {
-        if (hi >= lo)
+        if (hi <= lo)
             return lo;
         int p = selectMedianPivot(a, lo, hi);
         Comparable pivot = a[p];
