@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import algs.InsersionSort;
 import algs.MergeSort;
+import algs.QuickSort;
 import algs.SelectionSort;
 import algs.ShellSort;
 import algs.Stopwatch;
@@ -66,7 +67,24 @@ public class TestSort {
         MergeSort.sort(a);
         assertEquals(true, check(a));
     }
+    
+    @Test
+    public void testQuickSort() {
+        QuickSort.sort(a);
+        assertEquals(true, check(a));
+    }
 
+    @Test
+    public void testSelect() {
+        Comparable[] b = a.clone();
+        QuickSort.sort(b);
+        assertEquals(QuickSort.select(a.clone(), 1), b[1]);
+        assertEquals(QuickSort.select(a.clone(), 2), b[2]);
+        assertEquals(QuickSort.select(a.clone(), 4), b[4]);
+        assertEquals(QuickSort.select(a.clone(), 6), b[6]);
+        assertEquals(QuickSort.select(a.clone(), 9), b[9]);
+    }
+    
     @Test
     public void testTime() {
         for (int N = 1000; N <= 10000000; N *= 10) {
@@ -87,11 +105,16 @@ public class TestSort {
 //            watch = new Stopwatch();
 //            ShellSort.sort(d);
 //            System.out.println("Shell Sort: " + watch.elapsedTime());
-            
+//            
             d = a.clone();
             watch = new Stopwatch();
             MergeSort.sort(d);
             System.out.println("Merge Sort: " + watch.elapsedTime());
+            
+            d = a.clone();
+            watch = new Stopwatch();
+            QuickSort.sort(d);
+            System.out.println("Quick Sort: " + watch.elapsedTime());
         }
     }
 
