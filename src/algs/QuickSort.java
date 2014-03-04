@@ -84,14 +84,16 @@ public class QuickSort {
         int hi = a.length - 1;
         if (k < lo || k > hi)
             return null;
-        int i = partition(a, lo, hi);
-        while (i != k) {
+        while (lo <= hi) {
+            int i = partition(a, lo, hi);
             if (k < i)
-                i = partition(a, lo, i - 1);
+                hi = i - 1;
             else if (k > i)
-                i = partition(a, i + 1, hi);
+                lo = i + 1;
+            else
+                return a[k];
         }
-        return a[i];
+        return a[k];
     }
     
     private static boolean less(Comparable v, Comparable w) {
