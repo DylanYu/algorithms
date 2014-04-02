@@ -1,7 +1,5 @@
 package interview;
 
-import java.util.ArrayList;
-
 import algs.QuickSort;
 
 /**
@@ -10,6 +8,12 @@ import algs.QuickSort;
  * Given an array with N keys, design an algorithm to find all values that 
  * occur MORE than N/10 times. The expected running time of your algorithm 
  * should be linear.
+ * <p>
+ * Note: You should not use hash table (or, dictionary) to count.
+ * <p>
+ * Hint: determine the (N/10)th largest key using quickselect and check if 
+ * it occurs more than N/10 times.
+ * Alternate solution hint: use 9 counters.
  * 
  * @author Dongliang Yu
  *
@@ -22,32 +26,34 @@ public class DecimalDominants {
         for (int i = 0; i < N; i++)
             A[i] = a[i];
         int domiFact = N / 10;
-        if (domiFact == 0) {
+        if (domiFact <= 0) {
             return a;
         }
-        ArrayList<Double> result = new ArrayList<Double>();
-        Double prev = a[0];
-        for (int i = 1; i < 10; i++) {
-            Double now = (Double)QuickSort.select(A, i * domiFact);
-            System.out.println(now);
-            if (now.equals(prev)) {
-                if (result.size() == 0 || 
-                        !now.equals(result.get(result.size() - 1)))
-                    result.add(now);
+        double[] result = new double[9];
+        int numOfResult = 0;
+        double prevPivot = -1;
+        for (int pivotIndex = domiFact; pivotIndex < N; pivotIndex += domiFact) {
+            double pivot = (Double) QuickSort.select(A, pivotIndex);;
+            if (pivotIndex > domiFact) {
+                if (pivot == prevPivot)
+                    continue;
             }
-            prev = now;
+            int count = 0;
+            for (int i = 0; i < N; i++) {
+                if (a[i] == pivot)
+                    count++;
+            }
+            if (count > domiFact)
+                result[numOfResult++] = pivot;
+            prevPivot = pivot;
         }
-        // edge case
-        if (N % 10 == 0) {
-            prev = (Double)QuickSort.select(A, N - 1 - domiFact);
-            Double now = (Double)QuickSort.select(A, N - 1);
-            if (now.equals(prev))
-                result.add(now);
-        }
-        double[] re = new double[result.size()];
-        for (int i = 0; i < result.size(); i++)
-            re[i] = result.get(i);
-        return re;
+        if (numOfResult < 9) {
+            double[] realResult = new double[numOfResult];
+            for (int i = 0; i < numOfResult; i++)
+                realResult[i] = result[i];
+            return realResult;
+        } else
+            return result;
     }
 
 }
