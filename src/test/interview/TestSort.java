@@ -7,7 +7,7 @@ import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 
-import algs.InsersionSort;
+import algs.InsertionSort;
 import algs.MergeSort;
 import algs.Quick3Way;
 import algs.QuickSort;
@@ -46,7 +46,7 @@ public class TestSort {
         Random rand = new Random(System.currentTimeMillis());
         Double[] a = new Double[N];
         for (int i = 0; i < N; i++)
-            a[i] = (double) rand.nextInt();
+            a[i] = (double) rand.nextInt((int) (N * Math.sqrt(N)));
         return a;
     }
 
@@ -70,8 +70,8 @@ public class TestSort {
     }
 
     @Test
-    public void testInsersionSort() {
-        InsersionSort.sort(a);
+    public void testInsertionSort() {
+        InsertionSort.sort(a);
         assertEquals(true, check(a));
     }
 
@@ -83,7 +83,9 @@ public class TestSort {
     
     @Test
     public void testMergeSort() {
+        MergeSort.show(a);
         MergeSort.sort(a);
+        MergeSort.show(a);
         assertEquals(true, check(a));
     }
     
@@ -124,7 +126,7 @@ public class TestSort {
 //            d = a.clone();
 //            watch = new Stopwatch();
 //            InsersionSort.sort(d);
-//            System.out.println("Insersion Sort: " + watch.elapsedTime());
+//            System.out.println("Insertion Sort: " + watch.elapsedTime());
 //
 //            d = a.clone();
 //            watch = new Stopwatch();

@@ -7,42 +7,12 @@ package algs;
  */
 public class MergeSort{
 
-//    public static void sort(Comparable[] a) {
-//        Comparable[] aux = new Comparable[a.length];
-//        merge(a, aux, 0, a.length - 1);
-//    }
-    
-    private static void merge(Comparable[] a, Comparable[] aux, int lo, int hi) {
-        if (lo >= hi)
-            return;
-        int mid = (lo + hi) / 2;
-        merge(a, aux, lo, mid);
-        merge(a, aux, mid + 1, hi);
-        // copy
-        for (int i = lo; i <= hi; i++)
-            aux[i] = a[i];
-        int i = lo;
-        int j = lo;
-        int k = mid + 1;
-        while(j <= mid && k <= hi) {
-            if (less(aux[j], aux[k]))
-                a[i++] = aux[j++];
-            else
-                a[i++] = aux[k++];
-        }
-        if (j > mid) {
-            while (k <= hi)
-                a[i++] = aux[k++];
-        }
-        else {
-            while(j <= mid)
-                a[i++] = aux[j++];
-        }
-    }
+    private static int CUTOFF = 7;
     
     public static void sort(Comparable[] a) {
         Comparable[] aux = new Comparable[a.length];
         sort(a, aux, 0, a.length - 1);
+        //sortImproved(a, aux, 0, a.length - 1);
     }
     
     private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
@@ -52,7 +22,6 @@ public class MergeSort{
         sort(a, aux, lo, mid);
         sort(a, aux, mid + 1, hi);
         merge(a, aux, lo, mid, hi);
-//        merge_(a, aux, lo, mid, hi);
     }
     
     private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
@@ -67,7 +36,28 @@ public class MergeSort{
             else                        a[k] = aux[i++];
         }
     }
+
+    private static void sortImproved(Comparable[] a, Comparable[] aux, int lo, int hi) {
+        if (lo >= hi)
+            return;
+        // mergersort has too much overhead for tiny subarrays.
+        // cut off to insertion sort
+        if ((hi - lo) <= CUTOFF) {
+            InsertionSort.sort(a, lo, hi);
+            return;
+        }
+        int mid = lo + (hi - lo) / 2;
+        sortImproved(a, aux, lo, mid);
+        sortImproved(a, aux, mid + 1, hi);
+        // helps for partially-ordered arrays
+        if (less(a[mid], a[mid + 1]))
+            return;
+        merge(a, aux, lo, mid, hi);
+    }
     
+    /**
+     * less efficient (tiny difference), but maybe more straight forward
+     */
     private static void merge_(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
         for (int k = lo; k <= hi; k++)
             aux[k] = a[k];
@@ -112,5 +102,45 @@ public class MergeSort{
             System.out.print(a[i] + " ");
         System.out.println();
     }
+    
+    /*
+     * strange version, not worth understanding
+     */
+    /*
+    public static void sort(Comparable[] a) {
+        Comparable[] aux = new Comparable[a.length];
+        merge(a, aux, 0, a.length - 1);
+    }
+  
+    private static void merge(Comparable[] a, Comparable[] aux, int lo, int hi) {
+        if (lo >= hi)
+            return;
+        int mid = (lo + hi) / 2;
+        merge(a, aux, lo, mid);
+        merge(a, aux, mid + 1, hi);
+        // copy
+        for (int i = lo; i <= hi; i++)
+            aux[i] = a[i];
+        int i = lo;
+        int j = lo;
+        int k = mid + 1;
+        while(j <= mid && k <= hi) {
+            if (less(aux[j], aux[k]))
+                a[i++] = aux[j++];
+            else
+                a[i++] = aux[k++];
+        }
+        if (j > mid) {
+            while (k <= hi)
+                a[i++] = aux[k++];
+        }
+        else {
+            while(j <= mid)
+                a[i++] = aux[j++];
+        }
+        
+        assert isSorted(a, lo, hi);
+    }
+    */
 
 }
