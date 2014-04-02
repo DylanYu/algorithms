@@ -38,8 +38,6 @@ public class MergeSort{
             while(j <= mid)
                 a[i++] = aux[j++];
         }
-        
-//        assert isSorted(a, lo, hi);
     }
     
     public static void sort(Comparable[] a) {
@@ -50,23 +48,23 @@ public class MergeSort{
     private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
         if (lo >= hi)
             return;
-        int mid = (lo + hi) / 2;
+        int mid = lo + (hi - lo) / 2;
         sort(a, aux, lo, mid);
         sort(a, aux, mid + 1, hi);
+        merge(a, aux, lo, mid, hi);
 //        merge_(a, aux, lo, mid, hi);
-        merge__(a, aux, lo, mid, hi);
     }
     
-    private static void merge__(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
+    private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
         for (int k = lo; k <= hi; k++)
             aux[k] = a[k];
         int i = lo;
         int j = mid + 1;
         for (int k = lo; k <=hi; k++) {
-            if (i > mid)                a[k] = a[j++];
-            else if (j > hi)            a[k] = a[i++];
-            else if (less(a[i], a[j]))  a[k] = a[i++];
-            else                        a[k] = a[j++];
+            if (i > mid)                a[k] = aux[j++];
+            else if (j > hi)            a[k] = aux[i++];
+            else if (less(aux[j], aux[i]))  a[k] = aux[j++]; // stability
+            else                        a[k] = aux[i++];
         }
     }
     
