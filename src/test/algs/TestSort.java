@@ -1,4 +1,4 @@
-package test.interview;
+package test.algs;
 
 import static org.junit.Assert.assertEquals;
 
