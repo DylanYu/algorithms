@@ -1,4 +1,4 @@
-Java implementation for classic data structures and algorithms.
+Java implementation of classic data structures, algorithms and interview questions.
 
 Reference:
 
