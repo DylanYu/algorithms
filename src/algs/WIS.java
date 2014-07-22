@@ -22,7 +22,35 @@ public class WIS {
     }
 
     public static int bfMaxWIS(int[] v) {
-        return -1;
+        int len = v.length;
+        ArrayList<int[]> results = new ArrayList<int[]>();
+        int[] a = new int[len];
+        int[] b = new int[len];
+        b[0] = 1;
+        results.add(a);
+        results.add(b);
+        for (int index = 0; index < len; index++) {
+            int size = results.size();
+            for (int i = 0; i < size; i++) {
+                if (index == len - 1) break;
+                int[] arr = results.get(i);
+                if (arr[index] == 0) {
+                    int[] copy = (int[]) arr.clone();
+                    copy[index + 1] = 1;
+                    results.add(copy);
+                }
+                arr[index + 1] = 0;
+            }
+        }
+        int maxWIS = Integer.MIN_VALUE;
+        for (int[] arr : results) {
+            int wis = 0;
+            for (int i = 0; i < len; i++)
+                wis += arr[i] * v[i];
+            if (wis > maxWIS)
+                maxWIS = wis;
+        }
+        return maxWIS;
     }
 
     public static void main(String[] args) {
