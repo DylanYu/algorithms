@@ -1,6 +1,9 @@
 package test.util;
 
+import interview.TreeNode;
+
 import java.util.Random;
+
 
 public class Generator {
 
@@ -30,5 +33,16 @@ public class Generator {
         for (int i = 0; i < n; i++)
             a[i] = rand.nextDouble() * n;
         return a;
+    }
+    
+    public static TreeNode createTree() {
+        TreeNode root = new TreeNode(10);
+        root.left = new TreeNode(5);
+        root.right = new TreeNode(15);
+        //root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(9);
+        root.right.left = new TreeNode(11);
+        //root.right.right = new TreeNode(18);
+        return root;
     }
 }
