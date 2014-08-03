@@ -1,6 +1,8 @@
 package interview;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class BinaryTree {
     public static TreeNode createTree(int height) {
@@ -32,5 +34,23 @@ public class BinaryTree {
         	h++;
         }
         return root;
+    }
+    
+    public static void show(TreeNode root) {
+        if (root == null) return;
+        LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.add(root);
+        while (queue.size() > 0) {
+            TreeNode tail = queue.getLast();
+            TreeNode cur = queue.removeFirst();
+            while (true) {
+                System.out.print(cur.val + " ");
+                if (cur.left != null) queue.add(cur.left);
+                if (cur.right != null) queue.add(cur.right);
+                if (cur == tail) break;
+                cur = queue.removeFirst();
+            }
+            System.out.println();
+        }
     }
 }
