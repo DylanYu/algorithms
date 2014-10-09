@@ -21,7 +21,27 @@ public class LocalMinimum {
     }
     
     public static void main(String[] args) {
-        int[] A = {9, 8, 7, 2, 1, 3, 6, 5, 4, 10, 0, -1};
-        System.out.println(findLocalMinimum(A));
+        //int[] A = {9, 8, 7, 2, 1, 3, 6, 5, 4, 10, 0, -1};
+        for (int i = 0; i < 10; i++) {
+            int[] A = new int[12];
+            for (int j = 0; j < A.length; j++)
+                A[j] = (int) (Math.random() * Integer.MAX_VALUE);
+            int min = findLocalMinimum(A);
+            int j = 0;
+            while (j < A.length) {
+                if (A[j] == min) break;
+                j++;
+            }
+            if (j == A.length) {
+                System.out.println(false);
+                continue;
+            }
+            if (j == 0 && A[0] < A[1] 
+                || j == A.length-1 && A[A.length-1] < A[A.length-2]
+                || A[j] < A[j+1] && A[j] < A[j-1])
+                System.out.println(true);
+            else
+                System.out.println(false);
+        }
     }
 }
