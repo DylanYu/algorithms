@@ -7,46 +7,34 @@ package interview;
  *
  */
 public class BigIntAdd {
-    public static String add(String n1, String n2) {
-        if (n1 == null) return n2;
-        if (n2 == null) return n1;
-        if (n2.length() > n1.length()) {
-            String tmp = n1;
-            n1 = n2;
-            n2 = tmp;
-        }
-        char[] arr1 = n1.toCharArray();
-        char[] arr2 = n2.toCharArray();
-        int len1 = arr1.length;
-        int len2 = arr2.length;
+    public static String add(String s1, String s2) {
+        if (s1 == null && s2 == null) return "";
+        if (s1 == null) return s2;
+        if (s2 == null) return s1;
+        int len1 = s1.length();
+        int len2 = s2.length();
+        //if (len1 == 0) return s2;
+        //if (len2 == 0) return s1;
+        int len = Math.max(len1, len2) + 1;
+        int[] ret = new int[len];
         int i = len1-1;
         int j = len2-1;
+        int k = len-1;
         int carry = 0;
-        while  ( j >= 0) {
-            int a = arr1[i] - '0';
-            int b = arr2[j] - '0';
+        while (i >= 0 || j >= 0) {
+            int a = (i >= 0) ? s1.charAt(i--)-'0' : 0;
+            int b = (j >= 0) ? s2.charAt(j--)-'0' : 0;
             int sum = a + b + carry;
-            arr1[i] = (char) ((sum % 10) + '0');
+            ret[k--] = sum % 10;
             carry = sum / 10;
-            i--;
-            j--;
         }
-        while (i >= 0 && carry == 1) {
-            int a = arr1[i] - '0';
-            int sum = a + carry;
-            arr1[i] = (char) ((sum % 10) + '0');
-            carry = sum / 10;
-            i--;
-        }
-        if (carry == 1) {
-            StringBuffer sb = new StringBuffer();
-            sb.append('1');
-            sb.append(arr1, 0, len1);
-            return sb.toString();
-        } else {
-            String rst = new String(arr1);
-            return rst;
-        }
+        ret[0] = carry;
+        if (ret[0] == 0) k = 1;
+        else k = 0;
+        StringBuffer sb = new StringBuffer();
+        while (k < len)
+            sb.append(ret[k++]);
+        return sb.toString();
     }
     
     public static void main(String[] args) {
